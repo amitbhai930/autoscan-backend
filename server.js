@@ -1,4 +1,5 @@
-require('dotenv').config();
+require('dotenv').config({ path: __dirname + '/.env' });
+
 const express = require('express');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
@@ -21,6 +22,7 @@ const UserSchema = new mongoose.Schema({
 const User = mongoose.model("User", UserSchema);
 
 const SECRET = process.env.JWT_SECRET;
+console.log("MONGO_URL =", process.env.MONGO_URL);
 
 // Signup
 app.post('/api/signup', async (req,res)=>{
